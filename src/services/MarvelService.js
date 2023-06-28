@@ -25,10 +25,13 @@ class MarvelService {
     }
 
     _transformCharacter = (char) => {
+        const imageUrl = `${char.thumbnail.path}.${char.thumbnail.extension}`;
+        
         return {
+            id: char.id,
             name: char.name,
             description: !char.description ? "Unfortunately, there is no description for this character yet" : (`${char.description.slice(0, 230)}...`),
-            thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
+            thumbnail: imageUrl,
             homepage: char.urls[0].url,
             wiki: char.urls[1].url
         }
