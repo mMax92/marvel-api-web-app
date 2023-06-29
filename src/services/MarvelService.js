@@ -33,7 +33,8 @@ class MarvelService {
             description: !char.description ? "Unfortunately, there is no description for this character yet" : (`${char.description.slice(0, 230)}...`),
             thumbnail: imageUrl,
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+            wiki: char.urls[1].url,
+            comics: char.comics.items
         }
     }
 }
