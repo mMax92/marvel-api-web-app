@@ -16,7 +16,7 @@ class RandomChar extends Component {
 
     componentDidMount() {
         this.updateChar();
-        // this.timerID = setInterval(this.updateChar, 3000);
+        this.timerID = setInterval(this.updateChar, 3000);
     }
 
     componentWillUnmount() {
