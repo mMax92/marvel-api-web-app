@@ -20,6 +20,20 @@ class CharList extends Component {
 
     componentDidMount() {
         this.onRequest();
+        this.onScrollLoading();
+    }
+
+    componentWillUnmount() {
+        this.onScrollLoading();
+    }
+
+    onScrollLoading = () => {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY + document.documentElement.clientHeight >= document.documentElement.scrollHeight - 1) {
+                this.onRequest(this.state.offset);
+                window.removeEventListener('scroll', this.onRequest);
+            }
+        }) 
     }
 
     onRequest(offset) {
@@ -61,7 +75,7 @@ class CharList extends Component {
         const items = arr.map((item) => {
             let imageStyle = {'objectFit': 'cover'};
             
-            if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+            if (item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg' || item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708.gif') {
                 imageStyle = {'objectFit' : 'unset'};
             };
 
